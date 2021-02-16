@@ -11,7 +11,7 @@ export default async (req, res) => {
         headers: { 'Authorization': 'sso-key 3mM44UbCEmVCxs_D7Dox3fhW8K1yAN8rqkW3m:5fJmDDSTwrFopJ81Xd7NJF' },
         data: {
             "consent": {
-                "agreedAt": "2021-02-13T20:46:12Z",
+                "agreedAt": "2021-02-16T20:46:12Z",
                 "agreedBy": "185.97.92.118",
                 "agreementKeys": [
                     "DNRA"
@@ -19,79 +19,79 @@ export default async (req, res) => {
             },
             "contactAdmin": {
                 "addressMailing": {
-                    "address1": data['contactAdmin-adress1'],
+                    "address1": data['contactAdminadress1'],
                     "address2": data['contactAdmin-adress2'],
-                    "city": data['contactAdmin-city'],
-                    "country": "US",
-                    "postalCode": data['contactAdmin-postalcode'],
-                    "state": data['contactAdmin-state']
+                    "city": data['contactAdmincity'],
+                    "country": data['contactAdmincountry'],
+                    "postalCode": data['contactAdminpostalcode'],
+                    "state": data['contactAdminstate']
                 },
-                "email": data['contactAdmin-email'],
+                "email": data['contactAdminemail'],
                 "fax": data['contactAdmin-fax'],
                 "jobTitle": data['contactAdmin-jobTitle'],
-                "nameFirst": data['contactAdmin-nameFirst'],
-                "nameLast": data['contactAdmin-nameLast'],
+                "nameFirst": data['contactAdminnameFirst'],
+                "nameLast": data['contactAdminnameLast'],
                 "nameMiddle": data['contactAdmin-nameMiddle'],
                 "organization": data['contactAdmin-organization'],
-                "phone": data['contactAdmin-phone'],
+                "phone": data['contactAdminphone'],
             },
             "contactBilling": {
                 "addressMailing": {
-                    "address1": data['contactBilling-adress1'],
+                    "address1": data['contactBillingadress1'],
                     "address2": data['contactBilling-adress2'],
-                    "city": data['contactBilling-city'],
-                    "country": "US",
-                    "postalCode": data['contactBilling-postalcode'],
-                    "state": data['contactBilling-state']
+                    "city": data['contactBillingcity'],
+                    "country": data['contactBillingcountry'],
+                    "postalCode": data['contactBillingpostalcode'],
+                    "state": data['contactBillingstate']
                 },
-                "email": data['contactBilling-email'],
+                "email": data['contactBillingemail'],
                 "fax": data['contactBilling-fax'],
                 "jobTitle": data['contactBilling-jobTitle'],
-                "nameFirst": data['contactBilling-nameFirst'],
-                "nameLast": data['contactBilling-nameLast'],
+                "nameFirst": data['contactBillingnameFirst'],
+                "nameLast": data['contactBillingnameLast'],
                 "nameMiddle": data['contactBilling-nameMiddle'],
                 "organization": data['contactBilling-organization'],
-                "phone": data['contactBilling-phone']
+                "phone": data['contactBillingphone']
             },
             "contactRegistrant": {
                 "addressMailing": {
-                    "address1": data['contactRegistrant-address1'],
+                    "address1": data['contactRegistrantaddress1'],
                     "address2": data['contactRegistrant-address2'],
-                    "city": data['contactRegistrant-city'],
-                    "country": "US",
-                    "postalCode": data['contactRegistrant-postalcode'],
-                    "state": data['contactRegistrant-state']
+                    "city": data['contactRegistrantcity'],
+                    "country": data['contactRegistrantcountry'],
+                    "postalCode": data['contactRegistrantpostalcode'],
+                    "state": data['contactRegistrantstate']
                 },
-                "email": data['contactRegistrant-email'],
-                "fax": data['contactRegistrant-fax'],
+                "email": data['contactRegistrantemail'],
+                "fax": data['contactRegistrantfax'],
                 "jobTitle": data['contactRegistrant-jobTitle'],
-                "nameFirst": data['contactRegistrant-nameFirst'],
-                "nameLast": data['contactRegistrant-nameLast'],
+                "nameFirst": data['contactRegistrantnameFirst'],
+                "nameLast": data['contactRegistrantnameLast'],
                 "nameMiddle": data['contactRegistrant-nameMiddle'],
                 "organization": data['contactRegistrant-organization'],
-                "phone": data['contactRegistrant-phone']
+                "phone": data['contactRegistrantphone']
             },
             "contactTech": {
                 "addressMailing": {
-                    "address1": data['contactTech-adress1'],
+                    "address1": data['contactTechadress1'],
                     "address2": data['contactTech-address2'],
-                    "city": data['contactTech-city'],
-                    "country": data['contactTech-country'],
-                    "postalCode": data['contactTech-postalCode'],
-                    "state": data['contactTech-state']
+                    "city": data['contactTechcity'],
+                    "country": data['contactTechcountry'],
+                    "postalCode": data['contactTechpostalCode'],
+                    "state": data['contactTechstate']
                 },
-                "email": data['contactTech-email'],
+                "email": data['contactTechemail'],
                 "fax": data['contactTech-fax'],
                 "jobTitle": data['contactTech-jobTitle'],
-                "nameFirst": data['contactTech-nameFirst'],
-                "nameLast": data['contactTech-nameLast'],
+                "nameFirst": data['contactTechnameFirst'],
+                "nameLast": data['contactTechnameLast'],
                 "nameMiddle": data['contactTech-nameMiddle'],
                 "organization": data['contactTech-organization'],
-                "phone": data['contactTech-phone']
+                "phone": data['contactTechphone']
             },
             "domain": site,
             "nameServers": [
-                "ns50" + site
+                "ns50." + site
             ],
             "period": 1,
             "privacy": false,
@@ -100,12 +100,13 @@ export default async (req, res) => {
     }).then(function (response) {
         res.status(200).json({
             domain: response.data,
-            error: 'no'
+            error: process.env.fail
         })
+        console.log(response)
     })
         .catch(function (error) {
             console.log(error)
-            res.status(400).json({ error: 'yes' })
+            res.status(400).json({ error: process.env.success})
         });
 
 

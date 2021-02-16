@@ -11,10 +11,10 @@ export default async (req, res) => {
     }).then(function (response) {
         res.status(200).json({
             domain: response.data,
-            error: 'no'
+            error: process.env.fail
         })
     })
         .catch(function (error) {
-            res.status(400).json({ error: 'yes' })
+            res.status(400).json({ error: process.env.success})
         });
 }
